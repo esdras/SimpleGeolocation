@@ -1,0 +1,43 @@
+This gem is used with geolocation in mind, meaning that the main goal is to get a latitude and longitude, but it will return additional data if available. With this gem you can pass an IP number or an ZIP number or an ordinary address and it will try to get as many information as possible about the given argument.
+
+* IMPORTANT: At this moment only brazilian zipcode is supported. Fell free to add suport for zip codes from other countries.
+
+@usage
+
+gem install simple_geolocation
+require 'simple_geolocation'
+
+# Using with IP.
+location = SimpleGeolocation.Geocoder.new("74.125.113.104")
+location.geocode!
+geo.success? # => true
+location.city # => "Mountain View"
+location.state # => "CA"
+location.lat # => 37.41919999999999
+location.lng # => -122.0574
+location.provider # => "geoip"
+
+# Using with zipcode (Brazilian zipcode only)
+geo = SimpleGeolocation.Geocoder.new("22640100")
+geo.geocode!
+geo.success? # => true
+geo.street # => "Av. Das Américas"
+geo.district # => "Barra da Tijuca"
+geo.state # => "RJ"
+geo.city # => "Rio De Janeiro"
+geo.zip # => "22640-100"
+geo.lat # => -23.0032808
+geo.lng # => -43.3230295
+
+
+# Using with standard address
+geo = SimpleGeolocation::Geocoder.new("Rua do Principe, 199, Joinville, SC")
+geo.geocode!
+geo.success? # => true
+geo.lat # => -26.30101
+geo.lng # => -48.8452974
+geo.completeness # => 88
+
+
+The returned attributes are: lat, lng, city, state, provider, zip, street, district, number
+
