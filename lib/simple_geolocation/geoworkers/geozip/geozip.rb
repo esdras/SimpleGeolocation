@@ -10,7 +10,6 @@ module SimpleGeolocation
 
       private
 
-      # TODO I have to know exactly the fields returned by theese WS
       def get_location!
         begin
           result = ::BuscaEndereco.por_cep(geocoder.raw_location)
