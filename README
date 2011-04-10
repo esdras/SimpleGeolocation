@@ -40,4 +40,3 @@ geo.completeness # => 88
 
 
 The returned attributes are: lat, lng, city, state, provider, zip, street, district, number
-

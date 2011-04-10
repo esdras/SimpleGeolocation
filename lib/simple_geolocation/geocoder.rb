@@ -4,7 +4,11 @@ module SimpleGeolocation
     attr_reader :success, :raw_location, :location
     alias :success? :success
 
-    delegate *(Location::ATTRIBUTES + [:completeness]), :to => :location
+    def self.keys
+      Location::ATTRIBUTES + [:completeness]
+    end
+
+    delegate :lat, :lng, :city, :state, :provider, :zip, :street, :district, :number, :completeness, :to => :location
 
     def initialize(raw_location)
       @raw_location = raw_location
@@ -33,6 +37,10 @@ module SimpleGeolocation
 
     def success!
       @success = true
+    end
+
+    def attributes
+      @attributes ||= Hash[self.class.keys.map { |k| [k, send(k)] }]
     end
 
   end
