@@ -1,7 +1,5 @@
 This gem was created with geolocation in mind, meaning that the main goal is to get a latitude and longitude, but it will return additional data if available. With this gem you can pass an IP number or an ZIP number or an ordinary address and it will try to get as many information as possible about the given argument.
 
-* IMPORTANT: At this moment only brazilian zipcode is supported. Feel free to add suport for zip codes from other countries.
-
 @usage
 
 gem install simple_geolocation

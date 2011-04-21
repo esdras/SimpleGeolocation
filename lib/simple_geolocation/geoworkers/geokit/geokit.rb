@@ -22,6 +22,7 @@ module SimpleGeolocation
             :lng => result.lng,
             :city => result.city,
             :state => result.state,
+            :country => result.country,
             :street => result.street_name,
             :number => result.street_number,
             :zip => result.zip,

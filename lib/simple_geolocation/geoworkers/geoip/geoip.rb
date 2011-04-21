@@ -16,14 +16,12 @@ module SimpleGeolocation
 
       def get_location!
         result = ip_geocoder.city(geocoder.raw_location)
-        if @success  = result && result.city_name.present? && result.region_name.present?
-          @location = Location.new(
-            :lat => result.latitude,
-            :lng => result.longitude,
-            :city => result.city_name,
-            :state => result.region_name,
-            :provider => "geoip"
-          )
+        if @success  = result && result.latitude.present? && result.longitude.present?
+            new_raw_location = "#{result.latitude}, #{result.longitude}"
+            geokit = Geokit.new(Geocoder.new(new_raw_location))
+            geokit.process!
+            @success = geokit.success?
+            @location = geokit.location
         else
           Geokit.new(geocoder).process!
         end

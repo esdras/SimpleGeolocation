@@ -5,7 +5,7 @@ describe SimpleGeolocation do
 
 
   it 'should identify if the given location is an ip' do
-    @geo = SimpleGeolocation::Geocoder.new("74.125.113.105")
+    @geo = SimpleGeolocation::Geocoder.new("189.58.112.247")
     @geo.ip?.should be_true
     @geo.zip?.should be_false
     @geo.address?.should be_false
@@ -26,13 +26,16 @@ describe SimpleGeolocation do
   end
 
   it "should return the location of an user's based on IP" do
-    @geo = SimpleGeolocation::Geocoder.new("74.125.113.105")
+    @geo = SimpleGeolocation::Geocoder.new("189.58.112.247")
     @geo.ip?.should be_true
     @geo.geocode!
     @geo.success?.should be_true
-    @geo.lat.should == 37.41919999999999
-    @geo.lng.should == -122.0574
-    @geo.completeness.should == 55
+    @geo.lat.should == -26.3001576
+    @geo.lng.should == -48.8320838
+    @geo.city.should == "Joinville"
+    @geo.state.should == "SC"
+    @geo.country.should == "Brasil"
+    @geo.completeness.should == 90
   end
 
   it "should return the location of an ordinary address" do
@@ -42,7 +45,7 @@ describe SimpleGeolocation do
     @geo.success?.should be_true
     @geo.lat.should == -26.30101
     @geo.lng.should == -48.8452974
-    @geo.completeness.should == 88
+    @geo.completeness.should == 90
   end
 
   it "should return the location of a brazilian zipcode (CEP)" do
@@ -57,7 +60,7 @@ describe SimpleGeolocation do
     @geo.zip.should == "22640-100"
     @geo.lat.should == -23.0032808
     @geo.lng.should == -43.3230295
-    @geo.completeness.should == 88
+    @geo.completeness.should == 90
   end
 
 end

@@ -1,6 +1,6 @@
 module SimpleGeolocation
   class Location
-    ATTRIBUTES = [:lat, :lng, :city, :state, :provider, :zip, :street, :district, :number]
+    ATTRIBUTES = [:lat, :lng, :city, :state, :country, :provider, :zip, :street, :district, :number]
     attr_accessor *ATTRIBUTES
 
     def initialize(attributes = {})
