@@ -2,6 +2,8 @@ module SimpleGeolocation
   class Location
     ATTRIBUTES = [:lat, :lng, :city, :state, :country, :provider, :zip, :street, :district, :number]
     attr_accessor *ATTRIBUTES
+    alias :zipcode :zip
+    alias :zipcode= :zip=
 
     def initialize(attributes = {})
       unknown_attributes = attributes.keys.reject { |k| ATTRIBUTES.include?(k) }

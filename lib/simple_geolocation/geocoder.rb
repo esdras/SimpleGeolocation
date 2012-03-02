@@ -8,7 +8,7 @@ module SimpleGeolocation
       Location::ATTRIBUTES + [:completeness]
     end
 
-    delegate :lat, :lng, :city, :state, :country, :provider, :zip, :street, :district, :number, :completeness, :to => :location
+    delegate :lat, :lng, :city, :state, :country, :provider, :zip, :zipcode, :street, :district, :number, :completeness, :to => :location
 
     def initialize(raw_location)
       @raw_location = raw_location
