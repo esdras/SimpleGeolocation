@@ -14,19 +14,14 @@ module SimpleGeolocation
       @raw_location = raw_location
     end
 
-    def ip?
-      !!/^(\d+\.){3}\d+$/.match(@raw_location)
-    end
-
     # Only brazilian zipcode is supported.
     def zip?
-      return false if ip?
       number = @raw_location.to_s.gsub(/(\.|\D|\-|\s)/, '')
       number.size == 8
     end
 
     def address?
-      !ip? && !zip?
+      !zip?
     end
 
     def geocode!

@@ -14,9 +14,7 @@ module SimpleGeolocation
       end
 
       def self.instantiate_geoworker_based_on(geocoder)
-        if geocoder.ip?
-          GeoIP.new(geocoder)
-        elsif geocoder.zip?
+        if geocoder.zip?
           Geozip.new(geocoder)
         else
           Geokit.new(geocoder)
